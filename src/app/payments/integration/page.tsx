@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+
 import DashboardLayout from '@/components/DashboardLayout';
 import { useState, useEffect } from 'react';
 import { CreditCard, Shield, Settings, CheckCircle, XCircle } from 'lucide-react';

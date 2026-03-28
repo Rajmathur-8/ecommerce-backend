@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic';
+
 import DashboardLayout from '@/components/DashboardLayout';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import React, { useState, useEffect, useRef } from 'react';
