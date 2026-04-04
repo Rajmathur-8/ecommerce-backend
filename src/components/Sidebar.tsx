@@ -127,7 +127,7 @@ const menuItems = [
   },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ isMobile = false, onClose }: { isMobile?: boolean; onClose?: () => void }) {
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const pathname = usePathname();
 
@@ -173,19 +173,20 @@ export default function Sidebar() {
   }, [pathname]);
 
   return (
-    <div className="bg-white shadow-lg w-64 h-screen flex flex-col">
-      {/* Logo */}
-      <div className="p-6 border-b border-gray-200">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-primary-700 rounded-lg flex items-center justify-center shadow-sm">
-            <span className="text-white font-bold text-lg">E</span>
-          </div>
-          <span className="text-xl font-bold text-gray-900">Gupta Distributors</span>
-        </div>
+    <div className="bg-white shadow-md w-64 h-screen flex flex-col border-r border-gray-200">
+      {/* Logo Section */}
+      <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
+        <Link href="/dashboard" className="flex items-center space-x-3 group">
+          <img 
+            src="/Logo.jpg" 
+            alt="Gupta Distributors Logo" 
+            className="h-10 w-auto group-hover:opacity-80 transition-opacity"
+          />
+        </Link>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto p-4 space-y-1">
+      <nav className="flex-1 overflow-y-auto p-3 space-y-2">
         {menuItems.map((item) => {
           const Icon = item.icon;
           const hasSubmenu = item.submenu && item.submenu.length > 0;
@@ -198,35 +199,36 @@ export default function Sidebar() {
               <div key={item.title} className="mb-1">
                 <button
                   onClick={() => toggleExpanded(item.title)}
-                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-all duration-200 group ${
+                  className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-left font-medium transition-all duration-200 group ${
                     isItemActive
-                      ? 'bg-primary-50 text-primary-700 shadow-sm'
-                      : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                      ? 'bg-indigo-50 text-indigo-700 shadow-sm'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                   }`}
                 >
-                  <div className="flex items-center space-x-3">
-                    <Icon className={`w-5 h-5 transition-colors ${
-                      isItemActive ? 'text-primary-600' : 'text-gray-500 group-hover:text-gray-700'
+                  <div className="flex items-center space-x-3 flex-1">
+                    <Icon className={`w-5 h-5 flex-shrink-0 transition-colors ${
+                      isItemActive ? 'text-indigo-600' : 'text-gray-500 group-hover:text-gray-700'
                     }`} />
-                    <span className="font-medium text-sm">{item.title}</span>
+                    <span className="text-sm">{item.title}</span>
                   </div>
                   <ChevronDown 
-                    className={`w-4 h-4 transition-transform duration-200 text-gray-400 ${
+                    className={`w-4 h-4 transition-transform duration-300 flex-shrink-0 ${
                       isExpanded ? 'rotate-180' : ''
-                    } ${isItemActive ? 'text-primary-600' : ''}`} 
+                    } ${isItemActive ? 'text-indigo-600' : 'text-gray-400'}`} 
                   />
                 </button>
                 {/* Submenu */}
                 {isExpanded && (
-                  <div className="ml-4 mt-1 space-y-0.5 border-l-2 border-gray-100 pl-3 py-1">
+                  <div className="ml-4 mt-2 space-y-1 border-l-2 border-indigo-200 pl-0 py-1">
                     {item.submenu.map((subItem) => (
                       <Link
                         key={subItem.href}
                         href={subItem.href}
-                        className={`block px-3 py-2 rounded-md text-sm transition-all duration-200 ${
+                        onClick={() => isMobile && onClose?.()}
+                        className={`block px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                           isActive(subItem.href)
-                            ? 'bg-primary-50 text-primary-700 font-medium border-l-2 border-primary-600 -ml-3 pl-4'
-                            : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                            ? 'bg-indigo-100 text-indigo-700 border-l-2 border-indigo-600 -ml-1 pl-3'
+                            : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                         }`}
                       >
                         {subItem.title}
@@ -241,24 +243,28 @@ export default function Sidebar() {
               <div key={item.title} className="mb-1">
                 <Link
                   href={item.href}
-                  className={`block px-3 py-2.5 rounded-lg transition-all duration-200 group ${
+                  onClick={() => isMobile && onClose?.()}
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg font-medium transition-all duration-200 group ${
                     isItemActive
-                      ? 'bg-primary-50 text-primary-700 shadow-sm'
-                      : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                      ? 'bg-indigo-50 text-indigo-700 shadow-sm'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                   }`}
                 >
-                  <div className="flex items-center space-x-3">
-                    <Icon className={`w-5 h-5 transition-colors ${
-                      isItemActive ? 'text-primary-600' : 'text-gray-500 group-hover:text-gray-700'
-                    }`} />
-                    <span className="font-medium text-sm">{item.title}</span>
-                  </div>
+                  <Icon className={`w-5 h-5 flex-shrink-0 transition-colors ${
+                    isItemActive ? 'text-indigo-600' : 'text-gray-500 group-hover:text-gray-700'
+                  }`} />
+                  <span className="text-sm">{item.title}</span>
                 </Link>
               </div>
             );
           }
         })}
       </nav>
+
+      {/* Footer */}
+      <div className="p-4 border-t border-gray-200 bg-gradient-to-r from-gray-50 to-white">
+        <p className="text-xs text-gray-500 text-center">Admin Panel v1.0</p>
+      </div>
     </div>
   );
 } 

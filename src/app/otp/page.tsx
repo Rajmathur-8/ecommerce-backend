@@ -128,40 +128,51 @@ export default function OTPPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center p-4">
-      <div className="max-w-md w-full">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-blue-50 to-indigo-100 flex items-center justify-center p-3 md:p-4">
+      <div className="w-full max-w-md">
+        {/* Logo */}
+        <div className="text-center mb-6 md:mb-8">
+          <div className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-white rounded-2xl shadow-lg mb-4 md:mb-6">
+            <img 
+              src="/Logo.jpg" 
+              alt="Gupta Distributors Logo" 
+              className="h-10 md:h-12 w-auto"
+            />
+          </div>
+        </div>
+
         {/* Back to Forgot Password */}
-        <div className="mb-6">
+        <div className="mb-4 md:mb-6">
           <Link 
             href="/forgot-password" 
-            className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            className="inline-flex items-center text-xs md:text-sm text-gray-600 hover:text-indigo-600 transition-colors font-medium"
           >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Forgot Password
+            <ArrowLeft className="h-3 w-3 md:h-4 md:w-4 mr-1.5 md:mr-2" />
+            Back
           </Link>
         </div>
 
         {/* OTP Verification Form */}
-        <div className="card">
-          <div className="mb-8">
-            <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
-                <Key className="h-6 w-6 text-primary-600" />
+        <div className="card shadow-xl">
+          <div className="mb-6 md:mb-8">
+            <div className="flex justify-center mb-3 md:mb-4">
+              <div className="w-12 h-12 md:w-14 md:h-14 bg-indigo-100 rounded-full flex items-center justify-center">
+                <Key className="h-5 w-5 md:h-6 md:w-6 text-indigo-600" />
               </div>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2 text-center">Verify OTP</h1>
-            <p className="text-gray-600 text-center">
+            <h1 className="text-xl md:text-3xl font-bold text-gray-900 mb-1 md:mb-2 text-center">Verify OTP</h1>
+            <p className="text-gray-600 text-center text-xs md:text-sm">
               We've sent a 6-digit code to your email. Please enter it below.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
             {/* OTP Input Fields */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-4 text-center">
+              <label className="block text-xs md:text-sm font-semibold text-gray-700 mb-3 md:mb-4 text-center">
                 Enter 6-digit OTP
               </label>
-              <div className="flex justify-center space-x-2">
+              <div className="flex justify-center gap-1.5 md:gap-3">
                 {otp.map((digit, index) => (
                   <input
                     key={index}
@@ -175,7 +186,7 @@ export default function OTPPage() {
                     value={digit}
                     onChange={(e) => handleOtpChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
-                    className="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors"
+                    className="w-10 h-10 md:w-12 md:h-12 text-center text-lg md:text-xl font-bold border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors bg-white"
                     placeholder="0"
                   />
                 ))}
@@ -186,11 +197,11 @@ export default function OTPPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full btn-primary py-3 text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full btn-primary py-2.5 md:py-3 text-sm md:text-base font-semibold disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg transition-all"
             >
               {loading ? (
                 <div className="flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  <div className="animate-spin rounded-full h-4 w-4 md:h-5 md:w-5 border-b-2 border-white mr-2"></div>
                   Verifying...
                 </div>
               ) : (
@@ -200,18 +211,18 @@ export default function OTPPage() {
 
             {/* Resend OTP */}
             <div className="text-center">
-              <p className="text-sm text-gray-600 mb-2">
+              <p className="text-xs md:text-sm text-gray-600 mb-2 md:mb-3">
                 Didn't receive the code?
               </p>
               <button
                 type="button"
                 onClick={handleResendOTP}
                 disabled={resendLoading || countdown > 0}
-                className="text-sm text-primary-600 hover:text-primary-500 disabled:text-gray-400 disabled:cursor-not-allowed"
+                className="text-xs md:text-sm font-medium text-indigo-600 hover:text-indigo-700 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors"
               >
                 {resendLoading ? (
                   <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary-600 mr-2"></div>
+                    <div className="animate-spin rounded-full h-3 h-3 md:h-4 md:w-4 border-b-2 border-primary-600 mr-1 md:mr-2"></div>
                     Sending...
                   </div>
                 ) : countdown > 0 ? (
@@ -225,8 +236,8 @@ export default function OTPPage() {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-6">
-          <p className="text-sm text-gray-600">
+        <div className="text-center mt-4 md:mt-6">
+          <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} Gupta Distributors Admin. All rights reserved.
           </p>
         </div>

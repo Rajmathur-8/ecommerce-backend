@@ -380,107 +380,107 @@ export default function DashboardPage() {
 
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           {/* Total Revenue */}
           <div className="card hover:shadow-lg transition-shadow">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Total Revenue</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">{formatCurrency(stats.totalRevenue)}</p>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="w-full">
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Total Revenue</p>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{formatCurrency(stats.totalRevenue)}</p>
                 <div className="flex items-center mt-2">
                   {stats.revenueChange >= 0 ? (
                     <TrendingUp className="w-4 h-4 text-green-500" />
                   ) : (
                     <TrendingDown className="w-4 h-4 text-red-500" />
                   )}
-                  <span className={`text-sm font-medium ml-1 ${
+                  <span className={`text-xs sm:text-sm font-medium ml-1 ${
                     stats.revenueChange >= 0 ? 'text-green-600' : 'text-red-600'
                   }`}>
                     {stats.revenueChange >= 0 ? '+' : ''}{stats?.revenueChange?.toFixed(1)}%
                   </span>
-                  <span className="text-sm text-gray-500 ml-1">from last month</span>
+                  <span className="text-xs text-gray-500 ml-1">vs last month</span>
                 </div>
               </div>
-              <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center">
-                <DollarSign className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <DollarSign className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
             </div>
           </div>
 
           {/* Total Orders */}
           <div className="card hover:shadow-lg transition-shadow">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Total Orders</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">{formatNumber(stats.totalOrders)}</p>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="w-full">
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Total Orders</p>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{formatNumber(stats.totalOrders)}</p>
                 <div className="flex items-center mt-2">
                   {stats.ordersChange >= 0 ? (
                     <TrendingUp className="w-4 h-4 text-green-500" />
                   ) : (
                     <TrendingDown className="w-4 h-4 text-red-500" />
                   )}
-                  <span className={`text-sm font-medium ml-1 ${
+                  <span className={`text-xs sm:text-sm font-medium ml-1 ${
                     stats.ordersChange >= 0 ? 'text-green-600' : 'text-red-600'
                   }`}>
                     {stats.ordersChange >= 0 ? '+' : ''}{stats?.ordersChange?.toFixed(1)}%
                   </span>
-                  <span className="text-sm text-gray-500 ml-1">from last month</span>
+                  <span className="text-xs text-gray-500 ml-1">vs last month</span>
                 </div>
               </div>
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                <ShoppingCart className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
             </div>
           </div>
 
           {/* Total Customers */}
           <div className="card hover:shadow-lg transition-shadow">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Total Customers</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">{formatNumber(stats?.totalCustomers || 0)}</p>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="w-full">
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Total Customers</p>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{formatNumber(stats?.totalCustomers || 0)}</p>
                 <div className="flex items-center mt-2">
                   {stats.customersChange >= 0 ? (
                     <TrendingUp className="w-4 h-4 text-green-500" />
                   ) : (
                     <TrendingDown className="w-4 h-4 text-red-500" />
                   )}
-                  <span className={`text-sm font-medium ml-1 ${
+                  <span className={`text-xs sm:text-sm font-medium ml-1 ${
                     stats.customersChange >= 0 ? 'text-green-600' : 'text-red-600'
                   }`}>
                     {stats.customersChange >= 0 ? '+' : ''}{stats?.customersChange?.toFixed(1)}%
                   </span>
-                  <span className="text-sm text-gray-500 ml-1">from last month</span>
+                  <span className="text-xs text-gray-500 ml-1">vs last month</span>
                 </div>
               </div>
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <Users className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
             </div>
           </div>
 
           {/* Total Products */}
           <div className="card hover:shadow-lg transition-shadow">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Total Products</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">{formatNumber(stats?.totalProducts || 0)}</p>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="w-full">
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Total Products</p>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">{formatNumber(stats?.totalProducts || 0)}</p>
                 <div className="flex items-center mt-2">
                   {stats.productsChange >= 0 ? (
                     <TrendingUp className="w-4 h-4 text-green-500" />
                   ) : (
                     <TrendingDown className="w-4 h-4 text-red-500" />
                   )}
-                  <span className={`text-sm font-medium ml-1 ${
+                  <span className={`text-xs sm:text-sm font-medium ml-1 ${
                     stats.productsChange >= 0 ? 'text-green-600' : 'text-red-600'
                   }`}>
                     {stats.productsChange >= 0 ? '+' : ''}{stats?.productsChange?.toFixed(1)}%
                   </span>
-                  <span className="text-sm text-gray-500 ml-1">from last month</span>
+                  <span className="text-xs text-gray-500 ml-1">vs last month</span>
                 </div>
               </div>
-              <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
-                <Package className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Package className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
             </div>
           </div>
@@ -499,7 +499,7 @@ export default function DashboardPage() {
                 <span className="text-sm text-gray-500">This month</span>
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
               <div className="text-center">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <DollarSign className="w-8 h-8 text-blue-600" />
@@ -579,7 +579,7 @@ export default function DashboardPage() {
             </div>
             
             {/* Summary Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6">
               <div className="p-4 bg-blue-50 rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
@@ -708,39 +708,41 @@ export default function DashboardPage() {
                   <div>
                     {activeUsersList.length > 0 ? (
                       <>
-                        <div className="overflow-x-auto">
-                          <table className="w-full">
-                            <thead>
-                              <tr className="border-b">
-                                <th className="text-left py-3 px-4 font-medium text-gray-900">Name</th>
-                                <th className="text-left py-3 px-4 font-medium text-gray-900">Email</th>
-                                <th className="text-left py-3 px-4 font-medium text-gray-900">Phone</th>
-                                <th className="text-left py-3 px-4 font-medium text-gray-900">Total Orders</th>
-                                <th className="text-left py-3 px-4 font-medium text-gray-900">Last Order</th>
+                        <div className="overflow-x-auto rounded-lg border border-gray-200">
+                          <table className="w-full min-w-max">
+                            <thead className="bg-gray-50 border-b border-gray-200">
+                              <tr>
+                                <th className="text-left py-3 md:py-4 px-3 md:px-4 font-semibold text-xs md:text-sm text-gray-900">Name</th>
+                                <th className="text-left py-3 md:py-4 px-3 md:px-4 font-semibold text-xs md:text-sm text-gray-900">Email</th>
+                                <th className="text-left py-3 md:py-4 px-3 md:px-4 font-semibold text-xs md:text-sm text-gray-900">Phone</th>
+                                <th className="text-left py-3 md:py-4 px-3 md:px-4 font-semibold text-xs md:text-sm text-gray-900">Orders</th>
+                                <th className="text-left py-3 md:py-4 px-3 md:px-4 font-semibold text-xs md:text-sm text-gray-900">Last Order</th>
                               </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="divide-y divide-gray-200">
                               {activeUsersList.map((user) => {
                                 // Check if user is guest
                                 const isGuest = user.isGuest || user.email?.includes('@guest.com') || user.email?.startsWith('guest_');
                                 const displayName = isGuest ? 'Guest' : (user.name || 'N/A');
                                 
                                 return (
-                                <tr key={user._id} className="border-b hover:bg-gray-50">
-                                  <td className="py-3 px-4">
-                                    <p className="font-medium text-gray-900">{displayName}</p>
+                                <tr key={user._id} className="hover:bg-indigo-50 transition-colors duration-200">
+                                  <td className="py-3 md:py-4 px-3 md:px-4">
+                                    <p className="font-medium text-xs md:text-sm text-gray-900">{displayName}</p>
                                   </td>
-                                  <td className="py-3 px-4">
-                                    <p className="text-gray-600">{user.email}</p>
+                                  <td className="py-3 md:py-4 px-3 md:px-4">
+                                    <p className="text-xs md:text-sm text-gray-600 truncate md:truncate-none">{user.email}</p>
                                   </td>
-                                  <td className="py-3 px-4">
-                                    <p className="text-gray-600">{user.phone || 'N/A'}</p>
+                                  <td className="py-3 md:py-4 px-3 md:px-4">
+                                    <p className="text-xs md:text-sm text-gray-600">{user.phone || 'N/A'}</p>
                                   </td>
-                                  <td className="py-3 px-4">
-                                    <p className="text-gray-900">{formatNumber(user.totalOrders || 0)}</p>
+                                  <td className="py-3 md:py-4 px-3 md:px-4">
+                                    <span className="inline-flex items-center px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-medium bg-indigo-100 text-indigo-700">
+                                      {formatNumber(user.totalOrders || 0)}
+                                    </span>
                                   </td>
-                                  <td className="py-3 px-4">
-                                    <p className="text-gray-600">
+                                  <td className="py-3 md:py-4 px-3 md:px-4">
+                                    <p className="text-xs md:text-sm text-gray-600 whitespace-nowrap">
                                       {user.lastOrderDate ? formatDate(user.lastOrderDate) : 'N/A'}
                                     </p>
                                   </td>
@@ -753,25 +755,25 @@ export default function DashboardPage() {
                         
                         {/* Pagination */}
                         {activeUsersTotal > 10 && (
-                          <div className="flex items-center justify-between mt-6 pt-4 border-t">
-                            <p className="text-sm text-gray-600">
-                              Showing {((activeUsersPage - 1) * 10) + 1} to {Math.min(activeUsersPage * 10, activeUsersTotal)} of {formatNumber(activeUsersTotal)} users
+                          <div className="flex flex-col md:flex-row items-center justify-between mt-4 md:mt-6 pt-3 md:pt-4 border-t border-gray-200 gap-4">
+                            <p className="text-xs md:text-sm text-gray-600 text-center md:text-left">
+                              Showing {((activeUsersPage - 1) * 10) + 1} to {Math.min(activeUsersPage * 10, activeUsersTotal)} of {formatNumber(activeUsersTotal)}
                             </p>
                             <div className="flex items-center space-x-2">
                               <button
                                 onClick={() => setActiveUsersPage(prev => Math.max(1, prev - 1))}
                                 disabled={activeUsersPage === 1}
-                                className="px-3 py-1 border border-gray-300 rounded-md text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="px-3 md:px-4 py-2 border border-gray-300 rounded-lg text-xs md:text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:border-indigo-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                               >
-                                Previous
+                                Prev
                               </button>
-                              <span className="px-3 py-1 text-sm">
+                              <span className="px-2 md:px-3 py-1 text-xs md:text-sm font-medium text-gray-700 whitespace-nowrap">
                                 Page {activeUsersPage} of {Math.ceil(activeUsersTotal / 10)}
                               </span>
                               <button
                                 onClick={() => setActiveUsersPage(prev => Math.min(Math.ceil(activeUsersTotal / 10), prev + 1))}
                                 disabled={activeUsersPage >= Math.ceil(activeUsersTotal / 10)}
-                                className="px-3 py-1 border border-gray-300 rounded-md text-sm hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="px-3 md:px-4 py-2 border border-gray-300 rounded-lg text-xs md:text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:border-indigo-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                               >
                                 Next
                               </button>
@@ -793,7 +795,7 @@ export default function DashboardPage() {
         )}
 
         {/* Charts and Tables */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-6">
           {/* Sales Chart */}
           <div className="card flex flex-col h-full">
             <div className="flex items-center justify-between mb-6">
@@ -843,29 +845,29 @@ export default function DashboardPage() {
 
           {/* Recent Orders */}
           <div className="card flex flex-col h-full">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-gray-900">Recent Orders</h2>
-              <Link href="/orders" className="text-primary-600 hover:text-primary-700 text-sm font-medium flex items-center space-x-1">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 md:mb-6 pb-3 md:pb-4 border-b border-gray-200 gap-3">
+              <h2 className="text-lg md:text-xl font-semibold text-gray-900">Recent Orders</h2>
+              <Link href="/orders" className="text-indigo-600 hover:text-indigo-700 text-xs md:text-sm font-medium flex items-center space-x-1 transition-colors whitespace-nowrap">
                 <span>View All</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4" />
               </Link>
             </div>
-            <div className="space-y-4 flex-1">
+            <div className="space-y-2 md:space-y-3 flex-1">
               {recentOrders.length > 0 ? (
                 recentOrders.map((order) => (
-                  <div key={order._id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <div key={order._id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 p-3 md:p-4 border border-gray-200 rounded-lg hover:border-indigo-300 hover:bg-indigo-50 transition-all duration-200">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-9 h-9 md:w-10 md:h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 flex-shrink-0">
                         {getStatusIcon(order.status || 'pending')}
                       </div>
-                      <div>
-                        <p className="font-medium text-gray-900">{order.orderNumber || 'N/A'}</p>
-                        <p className="text-sm text-gray-600">{order.customer?.name || 'Unknown Customer'}</p>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-xs md:text-sm text-gray-900 truncate">{order.orderNumber || 'N/A'}</p>
+                        <p className="text-xs text-gray-600 truncate">{order.customer?.name || 'Unknown Customer'}</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="font-medium text-gray-900">{formatCurrency(order.totalAmount || 0)}</p>
-                      <span className={`inline-flex items-center px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(order.status || 'pending')}`}>
+                      <p className="font-semibold text-xs md:text-sm text-gray-900">{formatCurrency(order.totalAmount || 0)}</p>
+                      <span className={`inline-flex items-center px-2 md:px-3 py-1 text-xs font-semibold rounded-full ${getStatusColor(order.status || 'pending')}`}>
                         {order.status || 'pending'}
                       </span>
                     </div>
@@ -873,8 +875,8 @@ export default function DashboardPage() {
                 ))
               ) : (
                 <div className="text-center py-8 text-gray-500">
-                  <ShoppingCart className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-                  <p>No recent orders</p>
+                  <ShoppingCart className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-3 md:mb-4 text-gray-300" />
+                  <p className="text-xs md:text-sm">No recent orders</p>
                 </div>
               )}
             </div>
@@ -883,29 +885,29 @@ export default function DashboardPage() {
 
         {/* Top Products */}
         <div className="card">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Top Products</h2>
-            <Link href="/products" className="text-primary-600 hover:text-primary-700 text-sm font-medium flex items-center space-x-1">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 md:mb-6 pb-3 md:pb-4 border-b border-gray-200 gap-3">
+            <h2 className="text-lg md:text-xl font-semibold text-gray-900">Top Products</h2>
+            <Link href="/products" className="text-indigo-600 hover:text-indigo-700 text-xs md:text-sm font-medium flex items-center space-x-1 transition-colors whitespace-nowrap">
               <span>View All</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <ArrowUpRight className="w-3 h-3 md:w-4 md:h-4" />
             </Link>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-2 md:space-y-3">
             {topProducts.length > 0 ? (
               topProducts.map((product, index) => (
-                <div key={product._id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center">
-                      <span className="text-primary-600 font-bold text-sm">{index + 1}</span>
+                <div key={product._id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 p-3 md:p-4 border border-gray-200 rounded-lg hover:border-indigo-300 hover:bg-indigo-50 transition-all duration-200">
+                  <div className="flex items-start sm:items-center space-x-3">
+                    <div className="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 font-semibold text-xs md:text-sm flex-shrink-0">
+                      {index + 1}
                     </div>
-                    <div>
-                      <p className="font-medium text-gray-900">{product.productName || 'Unknown Product'}</p>
-                      <div className="flex items-center space-x-2">
+                    <div className="min-w-0">
+                      <p className="font-medium text-xs md:text-sm text-gray-900 truncate">{product.productName || 'Unknown Product'}</p>
+                      <div className="flex items-center space-x-1 mt-1">
                         <div className="flex items-center">
                           {[...Array(5)].map((_, i) => (
                             <Star
                               key={i}
-                              className={`w-3 h-3 ${
+                              className={`w-2.5 h-2.5 md:w-3 md:h-3 ${
                                 i < Math.floor(product.averageRating || 0) 
                                   ? 'text-yellow-400 fill-current' 
                                   : 'text-gray-300'
@@ -913,20 +915,20 @@ export default function DashboardPage() {
                             />
                           ))}
                         </div>
-                        <span className="text-sm text-gray-600">({(product.averageRating || 0).toFixed(1)})</span>
+                        <span className="text-xs text-gray-600">({(product.averageRating || 0).toFixed(1)})</span>
                       </div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <p className="font-medium text-gray-900">{formatCurrency(product.totalRevenue || 0)}</p>
-                    <p className="text-sm text-gray-600">{product.totalSales || 0} sales</p>
+                  <div className="text-right sm:text-right sm:whitespace-nowrap">
+                    <p className="font-medium text-xs md:text-sm text-gray-900">{formatCurrency(product.totalRevenue || 0)}</p>
+                    <p className="text-xs text-gray-600">{product.totalSales || 0} sales</p>
                   </div>
                 </div>
               ))
             ) : (
               <div className="text-center py-8 text-gray-500">
-                <Package className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-                <p>No products data available</p>
+                <Package className="w-10 h-10 md:w-12 md:h-12 mx-auto mb-3 md:mb-4 text-gray-300" />
+                <p className="text-xs md:text-sm">No products data available</p>
               </div>
             )}
           </div>
@@ -944,7 +946,7 @@ export default function DashboardPage() {
               <ArrowUpRight className="w-4 h-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             <div className="p-6 border rounded-lg hover:shadow-md transition-shadow">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">

@@ -68,25 +68,34 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center p-4">
-      <div className="max-w-md w-full">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-blue-50 to-indigo-100 flex items-center justify-center p-3 md:p-4">
+      <div className="w-full max-w-md">
         {/* Logo and Header */}
-       
+        <div className="text-center mb-6 md:mb-8">
+          <div className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-white rounded-2xl shadow-lg mb-4 md:mb-6">
+            <img 
+              src="/Logo.jpg" 
+              alt="Gupta Distributors Logo" 
+              className="h-10 md:h-12 w-auto"
+            />
+          </div>
+        </div>
 
         {/* Login Form */}
-        <div className="card">
-        <div className=" mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Sign In</h1>
-        </div>
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="card shadow-xl">
+          <div className="mb-6 md:mb-8">
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1 md:mb-2">Admin Sign In</h1>
+            <p className="text-xs md:text-sm text-gray-600">Enter your credentials to access the admin panel</p>
+          </div>
+          <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
             {/* Email Field */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-xs md:text-sm font-semibold text-gray-700 mb-1.5 md:mb-2">
                 Email Address
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
+                  <Mail className="h-4 w-4 md:h-5 md:w-5 text-indigo-500" />
                 </div>
                 <input
                   id="email"
@@ -94,7 +103,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="input-field pl-10"
-                  placeholder="Enter your email"
+                  placeholder="admin@example.com"
                   required
                 />
               </div>
@@ -102,12 +111,12 @@ export default function LoginPage() {
 
             {/* Password Field */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-xs md:text-sm font-semibold text-gray-700 mb-1.5 md:mb-2">
                 Password
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
+                  <Lock className="h-4 w-4 md:h-5 md:w-5 text-indigo-500" />
                 </div>
                 <input
                   id="password"
@@ -115,28 +124,32 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="input-field pl-10 pr-10"
-                  placeholder="Enter your password"
+                  placeholder="••••••••"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-indigo-600 transition-colors"
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400" />
+                    <EyeOff className="h-4 w-4 md:h-5 md:w-5" />
                   ) : (
-                    <Eye className="h-5 w-5 text-gray-400" />
+                    <Eye className="h-4 w-4 md:h-5 md:w-5" />
                   )}
                 </button>
               </div>
             </div>
 
             {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-end">
+            <div className="flex items-center justify-between">
+              <label className="flex items-center">
+                <input type="checkbox" className="w-4 h-4 rounded border-gray-300" />
+                <span className="ml-2 text-xs md:text-sm text-gray-600">Remember me</span>
+              </label>
               <a
                 href="/forgot-password"
-                className="text-sm text-primary-600 hover:text-primary-500"
+                className="text-xs md:text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
               >
                 Forgot password?
               </a>
@@ -146,11 +159,11 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full btn-primary py-3 text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full btn-primary py-2.5 md:py-3 text-sm md:text-base font-semibold disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-lg transition-all"
             >
               {loading ? (
                 <div className="flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  <div className="animate-spin rounded-full h-4 w-4 md:h-5 md:w-5 border-b-2 border-white mr-2"></div>
                   Signing in...
                 </div>
               ) : (
@@ -161,8 +174,8 @@ export default function LoginPage() {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-6">
-          <p className="text-sm text-gray-600">
+        <div className="text-center mt-6 md:mt-8">
+          <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} Gupta Distributors Admin. All rights reserved.
           </p>
         </div>
