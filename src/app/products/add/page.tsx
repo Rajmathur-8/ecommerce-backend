@@ -151,14 +151,15 @@ export default function AddProductPage() {
       if (response.ok) {
         const data = await response.json();
         
-        if (data.success && data.data) {
-          setBulkCategories(data.data);
-          
-          // Generate dynamic sample data based on available categories
+        if (data.data) {
+          // Check if categories exist
           if (data.data.categories && data.data.categories.length > 0) {
+            setBulkCategories(data.data);
+            
+            // Generate dynamic sample data based on available categories
             const sampleData = [];
             const firstCategory = data.data.categories[0];
-            const firstSubcategory = data.data.subcategories.find((sub: any) => sub.category === firstCategory);
+            const firstSubcategory = data.data.subcategories?.find((sub: any) => sub.category === firstCategory);
             
             // Sample 1
             sampleData.push({
@@ -205,7 +206,7 @@ export default function AddProductPage() {
             // Sample 2 (if we have more categories)
             if (data.data.categories.length > 1) {
               const secondCategory = data.data.categories[1];
-              const secondSubcategory = data.data.subcategories.find((sub: any) => sub.category === secondCategory);
+              const secondSubcategory = data.data.subcategories?.find((sub: any) => sub.category === secondCategory);
               
               sampleData.push({
                 productName: 'Sample Product 2',
@@ -251,17 +252,24 @@ export default function AddProductPage() {
 
             setBulkSampleData(sampleData);
           } else {
-            toast.error('No categories found. Please add categories first.');
+            // No categories exist in the system
+            toast.error('No categories found. Please set up categories first before importing products.');
+            // Still set empty bulk categories to prevent retry loop
+            setBulkCategories({ categories: [], subcategories: [] });
           }
         } else {
-          toast.error(data.message || 'Failed to load categories for import');
+          // No data in response
+          toast.error(data.message || 'Failed to load categories for import. Please ensure categories are set up in the system.');
+          setBulkCategories({ categories: [], subcategories: [] });
         }
       } else {
+        // Non-ok response
         const errorData = await response.json().catch(() => ({}));
-        toast.error(errorData.message || `Failed to load categories (${response.status})`);
+        toast.error(errorData.message || `Failed to load categories (${response.status}). Please try again.`);
       }
     } catch (error) {
-      toast.error('Network error: Failed to load categories for import');
+      console.error('Error fetching bulk import data:', error);
+      toast.error('Network error: Failed to load categories for import. Please check your connection and try again.');
     } finally {
       setBulkLoadingCategories(false);
     }
